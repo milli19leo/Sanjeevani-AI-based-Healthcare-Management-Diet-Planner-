@@ -20,10 +20,15 @@ Sanjeevani is an intelligent, web-based healthcare management platform designed 
 # Tech Stack
 
  ● Frontend: HTML, CSS
+ 
  ● Backend: Python (Flask)
+ 
  ● Database: MySQL
+ 
  ● AI/ML Tools: Document AI, Cosine Similarity (for collaborative filtering)
+ 
  ● Hosting Protocol: HTTP/HTTPS
+ 
  ● Installation Guide
 
  For academic/demo purposes only.
