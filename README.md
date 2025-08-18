@@ -1,5 +1,4 @@
 # Sanjeevani (AI-based Healthcare Management Diet Planner)
-Tech: Flask, MySQL, Random Forest, Google Document AI, HTML/CSS/JS
 
 Sanjeevani is an intelligent, web-based healthcare management platform designed to simplify medical services for patients, healthcare providers, and administrators. It integrates intelligent tools like disease prediction, personalized diet planning, electronic health records (EHR), and doctor search to provide quick, reliable, and user-friendly health assistance.
 
@@ -21,11 +20,11 @@ Sanjeevani is an intelligent, web-based healthcare management platform designed 
 # Tech Stack
 
  Frontend: HTML, CSS
-    Backend: Python (Flask)
-    Database: MySQL
-    AI/ML Tools: Document AI, Cosine Similarity (for collaborative filtering)
-    Hosting Protocol: HTTP/HTTPS
-    Installation Guide
+ Backend: Python (Flask)
+ Database: MySQL
+ AI/ML Tools: Document AI, Cosine Similarity (for collaborative filtering)
+ Hosting Protocol: HTTP/HTTPS
+ Installation Guide
 
  For academic/demo purposes only.
 
