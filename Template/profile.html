@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Management Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('/static/image.jpg') no-repeat center center/cover;
+        }
+
+        .container {
+            width: 450px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            width: 400px;
+            display: block;
+            margin: 0 auto 10px auto;
+            padding: 0;
+        }
+
+        h2 {
+            font-size: 26px;
+            margin-bottom: 10px;
+            color: #1e90ff;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            margin-bottom: 3px;
+            display: block;
+            color: #fff;
+        }
+
+        .form-group input{
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        .form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.2); 
+    color: #fff; 
+    appearance: none; 
+}
+
+       
+.form-group select::-ms-expand {
+    display: none; 
+}
+
+
+.form-group select option {
+    background: black; 
+    color: white;
+}
+
+
+.form-group select::-webkit-scrollbar {
+    width: 10px;
+}
+
+.form-group select::-webkit-scrollbar-track {
+    background: black; 
+}
+
+.form-group select::-webkit-scrollbar-thumb {
+    background: white; 
+    border-radius: 5px;
+}
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: #1e90ff;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            background: #1e90ff;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #0a74da;
+        }
+
+        .success-message {
+            color: green;
+            font-size: 14px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="/static/logo.png" alt="Logo" class="logo">
+        <h2>Update Profile</h2>
+        <p id="success-message" class="success-message"></p>
+        
+        <form id="profile-form">
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender" required>
+                    <option value="" disabled selected>Select your gender</option> 
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+        
+            <div class="form-group">
+                <label for="height">Height (cm)</label>
+                <input type="number" id="height" name="height" placeholder="Enter your height" step="0.1" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="weight">Weight (kg)</label>
+                <input type="number" id="weight" name="weight" placeholder="Enter your weight" step="0.1" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" placeholder="Enter your city" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" placeholder="Enter your state" required>
+            </div>
+        
+            <button type="submit">Update Profile</button>
+        </form>
+    </div>
+   
+</body>
+     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const profileForm = document.getElementById("profile-form");
+
+    if (!profileForm) {
+        console.error("Profile form not found!");
+        return;
+    }
+
+    profileForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const getValue = (id) => {
+            const element = document.getElementById(id);
+            return element ? element.value.trim() : null;
+        };
+
+        const profileData = {
+            gender: getValue("gender"),
+            height: getValue("height"),
+            weight: getValue("weight"),
+            city: getValue("city"),
+            state: getValue("state")
+        };
+
+        fetch('http://127.0.0.1:5000/update_profile', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(profileData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert("Profile updated successfully!");
+                window.location.href ="/login";
+            } else {
+                console.error("Error updating profile:", data.message);
+            }
+        })
+        .catch(error => console.error("Error:", error));
+    });
+});
+
+    </script>
+    
+</head>
+</html>

@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Management Registration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('/static/image.jpg') no-repeat center center/cover;
+        }
+
+        .container {
+            width: 450px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            width: 400px;
+            display: block;
+            margin: 0 auto 10px auto;
+            padding: 0;
+        }
+
+        h2 {
+            font-size: 26px;
+            margin-bottom: 10px;
+            color: #1e90ff;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            margin-bottom: 3px;
+            display: block;
+            color: #fff;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-group input:focus {
+            border-color: #1e90ff;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            background: #1e90ff;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #0a74da;
+        }
+
+        .links {
+            margin-top: 8px;
+        }
+
+        .links a {
+            color: #1e90ff;
+            text-decoration: none;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        .modal { 
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0, 0, 0, 0.5); 
+            justify-content: center; 
+            align-items: center; 
+        }
+        .modal-content { 
+            background: #fff; 
+            padding: 20px; 
+            border-radius: 10px; 
+            text-align: center; 
+        }
+        .modal-content button { 
+            margin: 10px; 
+            padding: 10px 20px; 
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="/static/logo.png" alt="Logo" class="logo">
+        <h2>Create an Account</h2>
+        <p id="registerError" class="error-message"></p>
+
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Create a password" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+                </div>
+                
+           
+                
+                
+                <center><button type="submit">Register</button></center>
+            </form>
+                <div class="links" id ="login-link">Already have an account? Login
+                </div>                
+            
+            <p id="message" style="color: red; text-align: center;"></p>
+        </div>
+    </div>
+
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <h3>Login As</h3>
+            <button onclick="window.location.href='/login'">User</button>
+            <button onclick="window.location.href='/admin_login'">Admin</button>
+            <br><button onclick="document.getElementById('loginModal').style.display='none'">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById('register-form').addEventListener('submit', async (event) => {
+                event.preventDefault();
+                let name = document.getElementById('name').value.trim();
+                let dob = document.getElementById('dob').value;
+                let email = document.getElementById('email').value.trim();
+                let password = document.getElementById('password').value;
+                let confirmPassword = document.getElementById('confirm-password').value;
+                let messageElement = document.getElementById('message');
+                
+                if (password !== confirmPassword) {
+                    messageElement.innerText = "Passwords do not match!";
+                    return;
+                }
+                
+                try {
+                    let response = await fetch('/register', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ full_name: name, dob: dob, email: email, password: password })
+                    });
+                    let result = await response.json();
+                    messageElement.innerText = result.message;
+                    if (result.success) setTimeout(() => window.location.href = result.redirect, 1500);
+                } catch (error) {
+                    console.error("Error:", error);
+                    messageElement.innerText = "An error occurred. Please try again.";
+                }
+            });
+            
+            document.getElementById('login-link').addEventListener('click', () => {
+                document.getElementById('loginModal').style.display = 'flex';
+            });
+        });
+</script>
+</body>
+</html>

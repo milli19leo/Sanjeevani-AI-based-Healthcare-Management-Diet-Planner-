@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Recommendations</title>
+    <style>
+        html { overflow: auto; scrollbar-width: none; }
+        html::-webkit-scrollbar { display: none; }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            height: 100vh;
+            background: url('/static/image.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+
+        header, footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            text-align: center;
+            padding: 10px;
+        }
+
+        .container { display: flex; height: 100%; }
+
+        .sidebar {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            width: 60px;
+            transition: width 0.3s;
+            overflow-y: auto;
+        }
+
+        .sidebar:hover { width: 250px; }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            transition: 0.3s;
+            gap: 15px;
+            overflow: hidden;
+        }
+
+        .sidebar a img { width: 40px; height: 40px; }
+        .sidebar a span { display: none; }
+        .sidebar:hover a span { display: inline-block; }
+        .sidebar a:hover { background: rgba(255, 255, 255, 0.4); transform: scale(1.05); }
+
+        .main {
+            flex-grow: 1;
+            padding: 20px;
+            transition: margin-right 0.3s;
+            overflow-y: auto;
+            text-align: center;
+        }
+
+        .sidebar:hover ~ .main { margin-right: 140px; }
+
+        h1, h2 {
+            color: #f8f3f3;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            text-align: center;
+        }
+
+        .icon-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        padding: 20px;
+    }
+    .file-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        cursor: pointer;
+    }
+    .file-item img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 2px solid #ddd;
+        transition: transform 0.3s;
+    }
+    .file-item img:hover {
+        transform: scale(1.1);
+    }
+    .file-item a {
+        text-decoration: none;
+        color: white;
+        margin-top: 5px;
+        font-size: 14px;
+        background: #5a5aad;
+        padding: 5px 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+    .file-item a:hover {
+        background: #4a4a9d;
+    }
+    </style>
+</head>
+<body>
+    <header><h1>Health Management System</h1></header>
+
+    <div class="container">
+        <div class="sidebar">
+            <a href="home"><img src="/static/home.png" alt="Home"> <span>Home</span></a>
+            <a href="/find_doctor"><img src="/static/doctor.webp" alt="Doctor"> <span>Find Doctor</span></a>
+            <a href="/ehr"><img src="/static/ehr.webp" alt="EHR"> <span>EHR</span></a>
+            <a href="/prediction"><img src="/static/disease.webp" alt="Prediction"> <span>Disease Prediction</span></a>
+            <a href="/diet"><img src="/static/diet.webp" alt="Diet"> <span>Diet Recommendation</span></a>
+            <a href="/feedback"><img src="/static/feedback.webp" alt="Feedback"> <span>Feedback</span></a>
+        </div>
+
+        <main class="main">
+            <h1>Uploaded Reports</h1>
+            <div id="largeIconsContainer" class="icon-container"></div>
+        </main>
+    </div>
+
+    <footer>© 2024 Health Management System</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+        fetch('/get_uploaded_reports')
+            .then(response => response.json())
+            .then(data => {
+                if (!data.success) {
+                    console.error("Error fetching files:", data.message);
+                    return;
+                }
+
+                const largeIconsContainer = document.getElementById("largeIconsContainer");
+
+                if (!data.files || data.files.length === 0) {
+                    largeIconsContainer.innerHTML = "<p>No reports uploaded yet.</p>";
+                    return;
+                }
+
+                data.files.forEach(file => {
+                    let filename = file.filename;
+                    let fileUrl = `/uploads/${filename}`;
+                    let fileExtension = filename.split('.').pop().toLowerCase();
+
+                    const fileItem = document.createElement("div");
+                    fileItem.classList.add("file-item");
+
+                    let filePreview = document.createElement("img");
+
+                    if (["jpg", "jpeg", "png", "gif"].includes(fileExtension)) {
+                        filePreview.src = fileUrl;
+                    } else if (fileExtension === "pdf") {
+                        filePreview.src = "/static/pdf-icon.png"; 
+                    } else {
+                        filePreview.src = "/static/default-file-icon.png";
+                    }
+
+                    filePreview.onerror = function () {
+                        this.src = "/static/default-file-icon.png";
+                    };
+
+                    let fileLink = document.createElement("a");
+                    fileLink.href = fileUrl;
+                    fileLink.textContent = "View / Download";
+                    fileLink.target = "_blank";
+                    fileLink.download = filename;
+
+                    fileItem.appendChild(filePreview);
+                    fileItem.appendChild(fileLink);
+                    largeIconsContainer.appendChild(fileItem);
+                });
+            })
+            .catch(error => console.error('Error loading reports:', error));
+    });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
