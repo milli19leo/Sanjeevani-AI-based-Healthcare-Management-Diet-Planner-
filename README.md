@@ -60,3 +60,4 @@ Sanjeevani is an intelligent, web-based healthcare management platform designed 
   ![3](https://github.com/user-attachments/assets/b6090b9c-884c-438f-966b-c525371cfaa6)
 
   <img width="1034" height="586" alt="image" src="https://github.com/user-attachments/assets/4b3035bc-c719-4c25-a85e-649c6e199591" />
+   image image image image
