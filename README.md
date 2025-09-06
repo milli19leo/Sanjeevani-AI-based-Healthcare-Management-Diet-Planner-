@@ -52,19 +52,7 @@ Sanjeevani is an intelligent, web-based healthcare management platform designed 
 ● All Module
       
 # Results
-
-[![Model Architecture](https://github.com/user-attachments/assets/2ddd0cd7-78ac-4dc0-bc10-1c82abf7b2a4)](https://private-user-images.githubusercontent.com/121447146/441601346-33ff3099-d5f3-4674-88a8-4332a49c0070.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTcxNzQ1MTcsIm5iZiI6MTc1NzE3NDIxNywicGF0aCI6Ii8xMjE0NDcxNDYvNDQxNjAxMzQ2LTMzZmYzMDk5LWQ1ZjMtNDY3NC04OGE4LTQzMzJhNDljMDA3MC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwOTA2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDkwNlQxNTU2NTdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0zYzg4NzY1MjM0ZTAzOWZkNmRiMzdlZjNlODM3NWY3MWZjNTRiZDQwNmZiN2I3NjBiMTA5NGZkODI3OGYyY2QyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.SK7Xc6TaAhmGbuCPDbC5S71e8bn0ZMWzQlNcl0xI3bo)
-![Training Pipeline](https://github.com/user-attachments/assets/fce0477f-de1b-477e-8ce4-ca74478a57e9)
-![Generated Samples](https://github.com/user-attachments/assets/b6090b9c-884c-438f-966b-c525371cfaa6)
-# Results
-
-<img src="https://github.com/user-attachments/assets/2ddd0cd7-78ac-4dc0-bc10-1c82abf7b2a4" width="600"/>
-<img src="https://github.com/user-attachments/assets/fce0477f-de1b-477e-8ce4-ca74478a57e9" width="600"/>
-<img src="https://github.com/user-attachments/assets/b6090b9c-884c-438f-966b-c525371cfaa6" width="600"/>
-# Comparison
-
-<p float="left">
-  <img src="https://github.com/user-attachments/assets/2ddd0cd7-78ac-4dc0-bc10-1c82abf7b2a4" width="400"/>
-  <img src="https://github.com/user-attachments/assets/fce0477f-de1b-477e-8ce4-ca74478a57e9" width="400"/>
-</p>
+![1](https://github.com/user-attachments/assets/1.jpg)
+![2](https://github.com/user-attachments/assets/fce0477f-de1b-477e-8ce4-ca74478a57e9) <img width="1133" height="638" alt="image" src="https://github.com/user-attachments/assets/1d2fd4a3-979f-42b0-98a2-dfe08ca661aa" /> 
+![3](https://github.com/user-attachments/assets/b6090b9c-884c-438f-966b-c525371cfaa6) <img width="1034" height="586" alt="image" src="https://github.com/user-attachments/assets/4b3035bc-c719-4c25-a85e-649c6e199591" />
 
