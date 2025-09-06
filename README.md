@@ -51,13 +51,20 @@ Sanjeevani is an intelligent, web-based healthcare management platform designed 
 
 ● All Module
       
-  ![1](https://github.com/user-attachments/assets/2ddd0cd7-78ac-4dc0-bc10-1c82abf7b2a4)
+# Results
 
-  ![2](https://github.com/user-attachments/assets/fce0477f-de1b-477e-8ce4-ca74478a57e9)
+![Model Architecture](https://github.com/user-attachments/assets/2ddd0cd7-78ac-4dc0-bc10-1c82abf7b2a4)
+![Training Pipeline](https://github.com/user-attachments/assets/fce0477f-de1b-477e-8ce4-ca74478a57e9)
+![Generated Samples](https://github.com/user-attachments/assets/b6090b9c-884c-438f-966b-c525371cfaa6)
+# Results
 
-  <img width="1133" height="638" alt="image" src="https://github.com/user-attachments/assets/1d2fd4a3-979f-42b0-98a2-dfe08ca661aa" />
+<img src="https://github.com/user-attachments/assets/2ddd0cd7-78ac-4dc0-bc10-1c82abf7b2a4" width="600"/>
+<img src="https://github.com/user-attachments/assets/fce0477f-de1b-477e-8ce4-ca74478a57e9" width="600"/>
+<img src="https://github.com/user-attachments/assets/b6090b9c-884c-438f-966b-c525371cfaa6" width="600"/>
+# Comparison
 
-  ![3](https://github.com/user-attachments/assets/b6090b9c-884c-438f-966b-c525371cfaa6)
+<p float="left">
+  <img src="https://github.com/user-attachments/assets/2ddd0cd7-78ac-4dc0-bc10-1c82abf7b2a4" width="400"/>
+  <img src="https://github.com/user-attachments/assets/fce0477f-de1b-477e-8ce4-ca74478a57e9" width="400"/>
+</p>
 
-  <img width="1034" height="586" alt="image" src="https://github.com/user-attachments/assets/4b3035bc-c719-4c25-a85e-649c6e199591" />
-   image image image image
